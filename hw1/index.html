@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hw1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- 上方標頭 -->
+    <div class="header">
+        <div class="logo">
+            <img src="./image/GOOGLE相簿LOGO.png" height="50" width="50">
+            <span>Pokemon相簿</span>
+        </div>
+        <div class="searchBar"></div>
+        <div class="info">
+            <div class="infologo">
+                <a href=""><img class="FB" src="./image/FB.png" height="50" width="50"></a>
+                <a href=""><img class="IG" src="./image/IG.png" height="50" width="50"></a>
+                <a href=""><img class="user" src="./image/user.png" height="50" width="50"></a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 下方內容 -->
+    <div class="container">
+        <!-- 下方的左側選單(含相簿選擇及其他功能) -->
+        <div class=" menu">
+            <div>
+                <ul>
+                    <li><a href="">首頁</a></li>
+                    <li><a href="">相片總覽</a></li>
+                    <li><a href="">最愛</a></li>
+                    <li><a href="">設定</a></li>
+                </ul>
+            </div>
+            <hr class="hr">
+            <div>
+                <p>相簿選取</p>
+                <ul>
+                    <li><a href="">皮卡丘</a></li>
+                    <li><a href="">傑尼龜</a></li>
+                    <li><a href="">妙蛙種子</a></li>
+                    <li><a href="">小火龍</a></li>
+                </ul>
+            </div>
+            <textarea name="mytext">
+ pokemon
+ get!
+        </textarea>
+            <hr class="hr">
+            <div>
+                <span class="logOut"><a href="">登出</a></span>
+            </div>
+        </div>
+
+
+        <!-- 下方的右側--照片總覽 -->
+        <div class="content">
+            <!-- 相片展示窗格 -->
+            <div class="display"></div>
+            <!-- 相簿內容 -->
+            <div id="1" class="album">
+                <div class="albumtitle"><a href="">皮卡丘</a></div>
+                <div class="albumpics">
+                    <a class="albumpic" href="#" style="background-image: url('image/p1.png');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/p2.png');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/p3.png');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/p4.png');"></a>
+                </div>
+                <div class="more"><a href=""> more > </a></div>
+
+            </div>
+            <div id="2" class="album">
+                <div class="albumtitle"><a href="">傑尼龜</a></div>
+                <div class="albumpics">
+                    <a class="albumpic" href="#" style="background-image: url('image/j2.jpg');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/j4.png');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/j3.jpg');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/j5.gif');"></a>
+                </div>
+                <div class="more"><a href=""> more > </a></div>
+            </div>
+            <div id="3" class="album">
+                <div class="albumtitle"><a href="">妙蛙種子</a></div>
+                <div class="albumpics">
+                    <a class="albumpic" href="#" style="background-image: url('image/m1.png');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/m2.jpg');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/m3.jpg');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/m4.jfif');"></a>
+                </div>
+                <div class="more"><a href=""> more > </a></div>
+            </div>
+            <div id="4" class="album">
+                <div class="albumtitle"><a href="">小火龍</a></div>
+                <div class="albumpics">
+                    <a class="albumpic" href="#" style="background-image: url('image/h1.jpg');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/h2.jpg');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/h3.jpg');"></a>
+                    <a class="albumpic" href="#" style="background-image: url('image/h4.jpg');"></a>
+                </div>
+                <div class="more"><a href=""> more > </a></div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
