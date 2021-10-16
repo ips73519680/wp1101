@@ -72,6 +72,7 @@ table {
     font-size: 30px;
     color: #ffffff;
 }
+
 .infologo{
     display: flex;
     justify-content:center;
@@ -111,22 +112,33 @@ table {
     height: 900px;
     /* width: 160px; */
     background-color: #be9898;
-    padding: 20px;
+  
     line-height: 40px;
     font-size: 20px;
     color: white;
     width: 15vw;
 }
+
 .menu a{
     color:rgb(236, 208, 164);
+    padding-top: 20px;
+    padding: 20px;
 }
+.menu textarea{
+    margin: 20px;
+}
+
 .menu p{
     font-size: 25px;
+    padding: 10px;
 }
 .menu textarea{
     display: block;
-    width: 15vw;
+    width: 10vw;
 }
+
+
+
 /* content */
 
 .content {
@@ -135,13 +147,22 @@ table {
     flex:1;
 }    
 .display{
+    display: flex;
+}
+.displaypic{
     background-size:contain;
     background-position:center;
     height: 400px;
     background-image:url("./image/display.jpg");
     background-repeat: no-repeat;
-    margin: 30px;
+  width: 70vw;
 }
+.bt{
+    display: inline-block;
+    width: 7.5vw;
+
+}
+
 .albumtitle{
     background-color:#7a6b6b;
     /* border: #b9b9b9 3px solid; */
@@ -174,13 +195,17 @@ opacity: 0.6;
     background-position:center;
     height:200px;
     background-repeat: no-repeat;
-               
+    cursor: pointer;    
+    opacity: 0.7;
 }
+
 .albumpic:hover{
     height:300px;
     opacity: 1;
     border: #c4adad 1px solid;
+    box-shadow: 5px 5px 5px rgb(139, 134, 134);
 }
+
 .albumtitle a{
     vertical-align:middle;
     font-weight:bold;
