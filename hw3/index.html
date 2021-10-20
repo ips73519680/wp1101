@@ -1,22 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>TODO APP in pure JS</title>
-        <link
-            rel="stylesheet"
-            type="text/css"
-            media="screen"
-            href="styles.css"
-        />
-    </head>
-    <body>
-        <div id="root" class="todo-app__root">
-            <header class="todo-app__header">
-                <h1 class="todo-app__title">todos</h1>
-            </header>
-        </div>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>TODO APP in pure JS</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+</head>
+
+<body>
+    <!-- 上方標題 -->
+    <div id="root" class="todo-app__root">
+        <header class="todo-app__header">
+            <h1 class="todo-app__title">todos</h1>
+        </header>
+
+        <!-- 中間區塊 -->
+        <section class="to-do-app__main">
+            <input class="todo-app__input" id="input">
+
+            <!-- 清單 -->
+            <!-- 　有東西才會呈現 -->
+            <ul class="todo-app__list" id="todo-app__list">
+
+                <!-- <li class="todo-app__item">
+                    <div class="todo-app__checkbox">
+                        <input id="1" type="checkbox"> <label for="1"></label>
+                    </div>
+                    <h1 class="todo-app__item-detail">hellooo1</h1>
+                    <img src="img/x.png" class="todo-app__item-x">
+                </li> -->
+                <!-- <li class="todo-app__item">
+                    <div class="todo-app__checkbox">
+                        <input id="2" type="checkbox"><label for="2"></label>
+                    </div>
+                    <h1 class="todo-app__item-detail">helloo2</h1>
+                    <img src="img/x.png" class="todo-app__item-x">
+                </li>
+                <li class="todo-app__item">
+                    <div class="todo-app__checkbox">
+                        <input id="3" type="checkbox">
+                        <label for="3"></label>
+                    </div>
+                    <h1 class="todo-app__item-detail">helloo3</h1>
+                    <img src="img/x.png" class="todo-app__item-x">
+                </li> -->
+
+            </ul>
+        </section>
+
+
+        <!-- 底下顯示 -->
+        <!-- 清單有東西才會呈現 -->
+        <footer class="todo-app__footer" id="todo-footer">
+            <div class="todo-app__total" id="todo-app__total">2 left</div>
+            <ul class="todo-app__view-buttons">
+                <li><button id="allbt">All</button></li>
+                <li><button id="activebt">Active</button></li>
+                <li><button id="completedbt">Completed</button></li>
+            </ul>
+            <div class="todo-app__clean"><button id="clearbt">Clear completed</button></div>
+        </footer>
         <script src="main.js"></script>
-    </body>
+</body>
+
 </html>

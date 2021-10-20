@@ -103,7 +103,13 @@ input[type='checkbox'] {
     position: relative;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.312);
 }
-
+/* titlebar.block a {
+    display: block;
+  } */
+  .todo-app__checkbox.click h1{
+    text-decoration: line-through; 
+    opacity: 0.5;
+  }
 .todo-app__checkbox label {
     width: 20px;
     height: 20px;
@@ -122,6 +128,8 @@ input[type='checkbox'] {
 
 .todo-app__checkbox input[type='checkbox']:checked + label {
     background: #26ca299b;
+    /* border: 5px solid blue; */
+ 
 }
 
 .todo-app__item-detail {
@@ -226,4 +234,28 @@ input[type='checkbox'] {
     max-width: 25px;
     max-height: 25px;
     right: 17.5px;
+}
+.tes{
+    width: 30px;
+    height: 30px;
+    background: #ddd;
+    margin: 15px;
+    border-radius: 100%;
+    position: relative;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.312);
+}
+.tes label{
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+
+    transition: all 0.5s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+
+    background: rgba(99, 99, 99, 0.698);
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.312);
 }
