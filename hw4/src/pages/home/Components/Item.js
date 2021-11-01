@@ -15,6 +15,9 @@ const Item = ({ click, setClick, text, id, deleteData, mode, completedClick }) =
     }
     function deleteItem() {
         deleteData(function (prev) {
+            if (state === 1) {
+                setClick(click - 1)
+            }
             return (prev.filter((item) => item.id !== id));
         })
     }
