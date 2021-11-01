@@ -51,7 +51,6 @@ class Row {
             } else {
                 h1Node.style = "text-decoration: line-through; opacity: 0.5;"
                 clickCompleted--;
-
             }
             footrender();
         })
