@@ -53,6 +53,9 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         {/* Useful Hint: A cell is going to be flagged. 'x' and 'y' are the xy-coordinate of the cell. */ }
         {/* Reminder: If the cell is already flagged, you should unflagged it. Also remember to update the board and the remainFlagNum. */ }
         {/* Reminder: The cell can be flagged only when it is not revealed. */ }
+        if (board[x][y].revealed === false) {
+            board[x][y].flagge === true;
+        }
 
     };
     {/* -- TODO 4-1 -- */ }
