@@ -59,9 +59,7 @@ db.once('open', () => {
                     break;
                 }
                 case 'clear': {
-                    console.log("hi clear");
                     Message.deleteMany({}, () => {
-                        console.log("hello delete!");
                         broadcastMessage(["cleared", [payload]], {
                             type: 'info', msg: 'Message cache cleared.'
                         });

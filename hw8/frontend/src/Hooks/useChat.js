@@ -7,7 +7,6 @@ const useChat = () => {
     const [status, setStatus] = useState({});
 
     const sendMessage = (payload) => {
-        console.log('client input!');
         sendData(["input", payload]);
     }
 
