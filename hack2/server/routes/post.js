@@ -11,11 +11,11 @@ router.get('/allPosts', async function (req, res) {
     const posts = await post.find()
     if (posts.length === 0) {
         console.log("not!")
-        res.json({
+
+        res.status(406).send({
             "message": "error",
             "data": null
         })
-        res.status(406).send({ message: 'error' })
     }
     else {
         console.log("good!")
@@ -27,11 +27,10 @@ router.get('/allPosts', async function (req, res) {
                 })
             }
         }
-        res.json({
+        res.status(200).send({
             "message": "success",
             "data": posts
         })
-        res.status(200).send({ message: 'success' })
     }
 });
 // TODO 3-(1): create the 2nd API (/api/postDetail)
@@ -42,14 +41,13 @@ router.get('/postDetail', async function (req, res) {
     if (posts.length === 0) {
         console.log("not!")
 
-
         res.status(406).send({
             "message": "error",
             "post": null
         })
     }
     else {
-        res.json()
+
         res.status(200).send({
             "message": "success",
             "post": data
