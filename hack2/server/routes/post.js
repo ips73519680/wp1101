@@ -37,11 +37,11 @@ router.get('/allPosts', async function (req, res) {
 
 router.get('/postDetail', async function (req, res) {
     const { queryString } = req.query
+
     const data = await post.find(queryString)
-    console.log(data);
+
     if (posts.length === 0) {
         console.log("not!")
-
         res.status(406).send({
             "message": "error",
             "post": null
@@ -62,7 +62,7 @@ router.post('/newPost', async function (req, res) {
         content,
         timestamp } = req.body
     if (posts.length === 0) {
-        console.log("not!")
+
         res.status(406).send({
             "message": "error",
             "post": null
