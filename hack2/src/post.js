@@ -14,14 +14,13 @@ function Post(props) {
   const getPostDetail = async () => {
     const {
       data: { messages, message },
-    } = await instance.get('postDetail', {
+    } = await instance.get('/postDetail', {
       params: {
         queryString: pid
       },
     });
     setData(data);
     console.log("new data!");
-    console.log(data);
   }
 
   // TODO 5-(2): complete delPost function to delete a post from database

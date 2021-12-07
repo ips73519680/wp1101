@@ -38,6 +38,7 @@ router.get('/allPosts', async function (req, res) {
 router.get('/postDetail', async function (req, res) {
     const { queryString } = req.query
     const data = await post.find(queryString)
+    console.log(data);
     if (posts.length === 0) {
         console.log("not!")
 

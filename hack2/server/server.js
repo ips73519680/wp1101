@@ -22,7 +22,7 @@ const dboptions = {
 }
 
 // TODO 1: connect to your mongodb here
-console.log(process.env.MONGO_URL);
+// console.log(process.env.MONGO_URL);
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
