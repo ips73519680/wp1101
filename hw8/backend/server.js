@@ -50,8 +50,8 @@ db.once('open', () => {
                         throw new Error
                             ("Message DB save error: " + e);
                     }
-                    // console.log("準備send data!");
-
+                    console.log("準備send data!");
+                    // console.log([payload]);
                     broadcastMessage(["output", [payload]], {
                         type: 'success',
                         msg: 'Message sent.'

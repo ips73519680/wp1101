@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const client = new WebSocket('ws://localhost:4000')
 
@@ -17,7 +17,10 @@ const useChat = () => {
     const clearMessages = () => {
         sendData(["clear"]);
     };
-
+    useEffect(() => {
+        console.log("new messages!");
+        console.log(messages);
+    }, [messages])
 
     client.onmessage = (byteString) => {
         const { data } = byteString;
@@ -25,12 +28,15 @@ const useChat = () => {
         switch (task) {
             case "init": {
                 // console.log("init ok!");
-                setMessages(() => payload); break;
+                setMessages(payload);
+
+                break;
             }
             case "output": {
                 // console.log("output ok!");
                 setMessages(() =>
-                    [...messages, ...payload]); break;
+                    [...messages, ...payload]);
+                break;
             }
             case "status": {
                 // console.log("status ok!");

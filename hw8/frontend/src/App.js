@@ -42,7 +42,7 @@ function App() {
     }
   }, [])
   if (hadSignIn === true) {
-    console.log('hi!hadSignIn!');
+
     return (
       <div className="App">
         <div className="App-title">
