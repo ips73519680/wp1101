@@ -41,13 +41,10 @@ const Mutation = {
       { returnDocument: "after" }
     );
     pubSub.publish("TASK_DELETE", {
-      taskUpdated: task,
+      taskDeleted: id,
     });
     return id;
   },
-
-
-
 
   // TODO 6.3 Add Subscription
 };
