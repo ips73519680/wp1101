@@ -19,10 +19,11 @@ const ChatRoom = ({ me }) => {
     const [messageInput, setMessageInput] = useState("")
     const [modalVisible, setModalVisible] = useState(false)
     const [activeKey, setActiveKey] = useState("")
-    const [test, setTest] = useState(0)
     const { chatBoxes, createChatBox, removeChatBox, setChatBoxes } = useChatBox()
     const { status, sendMessage } = useChat(addMsg)
-    const addChatBox = () => { setModalVisible(true) }
+    const addChatBox = () => {
+        setModalVisible(true)
+    }
 
     const findFriend = (activeKey) => {
         console.log(chatBoxes)
@@ -33,58 +34,12 @@ const ChatRoom = ({ me }) => {
                 friend = chatbox.friend
             }
         })
+        console.log("find friend" + friend);
         return friend
     }
-    // server.onmessage = (msg) => {
-    //     onEvent(JSON.parse(msg.data));
-    // }
-    const onEvent = (e) => {
-        const { type } = e;
-        console.log("message coming!")
-        console.log("setsate?")
-        switch (type) {
-            case 'CHAT': {
-                const messages = e.data.messages
-                if (messages.length) {
-                    const { key } = messages[0]
-                    console.log(key)
-                    const newBoxes = chatBoxes
-                    newBoxes.forEach((chatbox) => {
-                        if (chatbox.key === key) {
-                            chatbox.chatLog = messages
-                        }
-                    })
-                    console.log(newBoxes)
-                    setTest(test + 1)
-                    setChatBoxes(newBoxes)
-                }
 
-                console.log('chat from server!')
-                break;
-            }
-            case 'MESSAGE': {
-                const { name, to, key } = e.data.message
-                //key is chatboxname
-                const newBoxes = chatBoxes
-                newBoxes.forEach((chatbox) => {
-                    if (chatbox.key === key) {
-                        chatbox.chatLog.push(e.data.message)
-                    }
-                })
-                setChatBoxes(newBoxes)
-                setTest(test + 1)
-                console.log('message from client!')
-                console.log(newBoxes)
-                break;
-            }
-        }
-    };
     console.log("re-render!")
     console.log(chatBoxes)
-    // useEffect(()=>{
-    //     setChatBoxes(chatBoxes)
-    //     console.log("hihihi")
-    // },[chatBoxes])
 
     return (
         <>
@@ -100,41 +55,22 @@ const ChatRoom = ({ me }) => {
                     }}
                 >
                     {chatBoxes.map(({ friend, key, chatLog }) => {
-                        // console.log(chatLog)
+                        console.log(friend, key, chatLog);
                         return (
-                            // <ChatBox me={me} friend={friend} boxName={key}/>
                             <TabPane
                                 tab={friend}
                                 key={key}
                                 closable={true}
                             >
                                 <ChatBox me={me} friend={friend} boxName={key} />
-                                {/* <p>{friend}'s chatbox.</p>
-                                {chatLog.length === 0?
-                                <p style={{ color: '#ccc' }}>
-                                    No messages...
-                                </p>
-                                :
-                                chatLog.map(({name, body})=>(
-                                    name === me?
-                                    <p style={{textAlign:"right"}}>
-                                        {`${body}   `}
-                                        <Tag color="blue">{name}</Tag>
-                                    </p>
-                                    :
-                                    <p>
-                                        <Tag color="blue">{name}</Tag>
-                                        {body}
-                                    </p>
-                                ))} */}
                             </TabPane>
                         )
-
                     })}
                 </Tabs>
                 <ChatModal
                     visible={modalVisible}
                     onCreate={async ({ name }) => {
+                        console.log(name)
                         setActiveKey(createChatBox(name, me))
                         await addBox({ variables: { name: me, to: name } })
                         setModalVisible(false)

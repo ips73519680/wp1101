@@ -36,5 +36,4 @@ enum MutationType {
 
 type MessageSubscriptionPayload {
     mutation: MutationType!
-    data: Message!
-}
+    data: Message!}

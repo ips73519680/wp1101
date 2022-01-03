@@ -1,56 +1,59 @@
-
-//from class
-
-import { checkUser, newUser, makeName, checkChatBox, checkMessage, newMessage, newChatBox } from './utility';
+import { PubSub } from "graphql-yoga";
 
 const Mutation = {
+  async createChatBox(parent, args, { db }, info) {
+    // create chatbox in db. Then return a chatbox.
 
-  async createMessage(parent, { from, to, message }, { db, pubsub }, info) {
-    const { chatBox, sender } = await checkMessage(
-      db,
-      from,
-      to,
-      message,
-      "createMessage"
-    );
-    if (!chatBox) throw new Error("chatBox not found for createMessage");
-    if (!sender) throw new Error("User not found" + from);
-
-    const chatBoxName = makeName(from, to);
-    const newMsg = await newMessage(db, sender, message);
-    chatBox.message.push(newMsg);
-    await chatBox.save();
-
-    pubsub.publish(`chatBox ${chatBoxName}`, {
-      message: { mutation: "CREATED", message: newMsg }
-    })
+    const makeName = (name, to) => {
+      return [name, to].sort().join('_');
+    };
+    const {
+      UserModel,
+      ChatBoxModel,
+      MessageModel,
+      validateUser,
+      validateChatBox
+    } = db
+    const { name, to } = args
+    const chatBoxName = makeName(name, to);
+    const sender = await validateUser(name);
+    const receiver = await validateUser(to);
+    const chatBox = await validateChatBox(chatBoxName, [sender, receiver])
+    console.log(chatBox)
+    return chatBox
   },
+  async createMessage(parent, args, { db, pubsub }, info) {
+    // create message
+    const makeName = (name, to) => {
+      return [name, to].sort().join('_');
+    };
+    const {
+      UserModel,
+      ChatBoxModel,
+      MessageModel,
+      validateUser,
+      validateChatBox
+    } = db
+    const { name, to, body } = args
 
-  async createChatBox(parent, { name1, name2 }, { db, pubsub }, info) {
-    if (!name1 || !name2)
-      throw new Error("Missing chatBox name for CreateChatBox ");
-
-    if (!(await checkUser(db, name1, "createChatBox"))) {
-      console.log("User does not exist for CreateChatBox: " + name1);
-      await newUser(db, name1);
-    }
-
-    if (!(await checkUser(db, name2, "createChatBox"))) {
-      console.log("User does not exist for CreateChatBox: " + name2);
-      await newUser(db, name2);
-    }
-
-    const chatBoxName = makeName(name1, name2);
-    let chatBox =
-      await checkChatBox(db, chatBoxName, "createChatBox");
-    if (!chatBox) chatBox = await newChatBox(db, chatBoxName);
-
-    return chatBox;
-
+    const chatBoxName = makeName(name, to);
+    const sender = await validateUser(name);
+    const receiver = await validateUser(to);
+    const chatBox = await validateChatBox(chatBoxName, [sender, receiver])
+    const newMessage = new MessageModel({ sender, body });
+    await newMessage.save();
+    chatBox.messages.push(newMessage);
+    await chatBox.save();
+    console.log(`New msg! ${newMessage}`)
+    console.log('New Boxes:', chatBox)
+    pubsub.publish(`message in box ${chatBoxName}`, {
+      message: {
+        mutation: 'CREATED',
+        data: newMessage
+      }
+    })
+    return newMessage
   }
+}
 
-
-};
-
-export { Mutation as default };
-
+export default Mutation

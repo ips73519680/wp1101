@@ -1,26 +1,3 @@
-
-// import mongoose from "mongoose"
-
-// const { Schema } = mongoose;
-// const ChatBoxSchema = new Schema({
-//     name: { type: String, required: true },
-//     messages: [{ type: mongoose.Types.ObjectId, ref: "Message" }],
-// });
-// const MessageSchema = new Schema({
-//     sender: { type: mongoose.Types.ObjectId, ref: "User" },
-//     body: { type: String, required: true },
-// });
-// const UserSchema = new Schema({
-//     name: { type: String, required: true },
-// });
-
-// const UserModel = mongoose.model("User", UserSchema);
-// const ChatBoxModel = mongoose.model("ChatBox", ChatBoxSchema);
-// const MessageModel = mongoose.model("Message", MessageSchema);
-
-// export { UserModel, ChatBoxModel, MessageModel }
-
-
 import mongoose from 'mongoose'
 
 const { Schema } = mongoose;
@@ -42,23 +19,26 @@ const chatBoxSchema = new Schema({
     messages: [{ type: mongoose.Types.ObjectId, ref: 'Message' }],
 });
 
+const validateUser = async (name) => {
+    console.log("test validateUser");
+    const existing = await UserModel.findOne({ name });
+    if (existing) return existing;
+    return new UserModel({ name }).save();
+};
 
-///====進階要求===
-// const validateUser = async (name) => {
-//     const existing = await UserModel.findOne({ name });
-//     if (existing) return existing;
-//     return new UserModel({ name }).save();
-// };
+const validateChatBox = async (name, participants) => {
+    console.log("test validateChatBox");
+    const existing = await UserModel.findOne({ name });
+    if (!existing) new UserModel({ name }).save();
 
-// const validateChatBox = async (name, participants) => {
-//     let box = await ChatBoxModel.findOne({ name });
-//     if (box) console.log("box exist!")
-//     if (!box) box = await new ChatBoxModel({ name, users: participants }).save();
-//     return box
-//         .populate('users')
-//         .populate({ path: 'messages', populate: 'sender' })
-//         .execPopulate();
-// };
+    const participant = await UserModel.findOne({ participants });
+    if (!participant) new UserModel({ participants }).save();
+
+    let box = await ChatBoxModel.findOne({ name });
+    if (box) return box;
+    return new ChatBoxModel({ name, users: participants }).save();
+
+};
 
 const UserModel = mongoose.model('User', userSchema);
 const ChatBoxModel = mongoose.model('ChatBox', chatBoxSchema);
@@ -67,7 +47,9 @@ const MessageModel = mongoose.model('Message', messageSchema);
 const db = {
     UserModel,
     ChatBoxModel,
-    MessageModel
+    MessageModel,
+    validateUser,
+    validateChatBox
 }
 
 export default db
