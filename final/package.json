@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ips73519680/tutor_web.git",
+  "license": "MIT",
+  "scripts": {
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && yarn server",
+    "build": "cd frontend && yarn install && yarn build"
+  }
+}

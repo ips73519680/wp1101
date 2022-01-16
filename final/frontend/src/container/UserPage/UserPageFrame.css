@@ -1,0 +1,30 @@
+
+/*===== header =====*/
+.logo {
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .ant-row-rtl #components-layout-demo-top-side-2 .logo {
+    float: right;
+    margin: 16px 0 16px 24px;
+  }
+  
+  .site-layout-background {
+    background: #fff;
+  }
+  #root > section > header{
+      background-color: #af9b8d;
+  }
+  #root > section > header > ul{
+      background-color: #af9b8d;
+  }
+  #root > section > header > ul > li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-selected.ant-menu-item-only-child{
+      background: #856b5a;
+  }
+
+  /*===== sider =====*/

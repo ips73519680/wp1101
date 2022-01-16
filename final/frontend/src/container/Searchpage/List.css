@@ -1,0 +1,16 @@
+.list{
+    margin: 10px;
+    padding: 10px;
+    background:rgb(240, 218, 123);
+	border-radius: 10px;
+    width: 60%;
+} 
+.teacherPic{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background: white;
+}
+.gutter-box {
+    padding: 8px;
+}
