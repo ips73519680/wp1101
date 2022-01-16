@@ -62,7 +62,6 @@ router.post('/newPost', async function (req, res) {
         content,
         timestamp } = req.body
     if (posts.length === 0) {
-
         res.status(406).send({
             "message": "error",
             "post": null
@@ -77,7 +76,6 @@ router.post('/newPost', async function (req, res) {
         })
         console.log("create new post");
         await newPost.save();
-
         res.status(200).send({
             "message": "success",
         })

@@ -19,7 +19,7 @@ function Post(props) {
         queryString: pid
       },
     });
-    setData(data.data);
+    setData(data.post);
     console.log("new data!");
   }
 
